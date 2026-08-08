@@ -12,10 +12,6 @@ int main() {
   InitWindow(WINDOW_WIDHT, WINDOW_HEIGHT, "Game of Life");
   SetTargetFPS(FPS);
   Simulation simulation{WINDOW_WIDHT, WINDOW_HEIGHT, CELL_SIZE};
-  simulation.SetCellValue(3, 4, 1);
-  simulation.SetCellValue(3, 5, 1);
-  simulation.SetCellValue(4, 5, 1);
-  simulation.SetCellValue(2, 5, 1);
 
   std::cout << simulation.CountLiveNeighbours(3, 4) << std::endl;
 
@@ -24,6 +20,7 @@ int main() {
     // 1. Event handling
 
     // 2. Updating state
+    simulation.Update();
 
     // 3. Draw
     BeginDrawing();

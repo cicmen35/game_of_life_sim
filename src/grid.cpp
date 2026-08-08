@@ -31,3 +31,13 @@ bool Grid::IsWithinBounds(int row, int column) {
   }
   return false;
 }
+
+void Grid::FillRandom() {
+  for (int row = 0; row < rows; row++) {
+    for (int column = 0; column < columns; column++) {
+      int randomValue = GetRandomValue(0, 4);
+      cells[row][column] =
+          (randomValue == 4) ? 1 : 0; // 20% of cells will be 1s and 80% 0s
+    }
+  }
+}
