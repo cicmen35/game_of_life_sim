@@ -1,0 +1,17 @@
+*.exe
+*.dsym
+main
+
+# Compiled Executables
+game
+*.o
+*.obj
+# Build Folders (if you use them later)
+build/
+bin/
+obj/
+# OS Generated Files
+.DS_Store
+*.DS_Store
+.AppleDouble
+.LSOverride
