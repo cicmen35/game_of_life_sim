@@ -31,25 +31,39 @@ int Simulation::CountLiveNeighbours(int row, int column) {
 };
 
 void Simulation::Update() {
-  for (int row = 0; row < grid.GetRows(); row++) {
-    for (int column = 0; column < grid.GetColumns(); column++) {
-      int liveNeighbours = CountLiveNeighbours(row, column);
-      int cellValue = grid.GetValue(row, column);
+  if (IsRunning()) {
+    for (int row = 0; row < grid.GetRows(); row++) {
+      for (int column = 0; column < grid.GetColumns(); column++) {
+        int liveNeighbours = CountLiveNeighbours(row, column);
+        int cellValue = grid.GetValue(row, column);
 
-      if (cellValue == 1) {
-        if (liveNeighbours > 3 || liveNeighbours < 2) {
-          tempGrid.SetValue(row, column, 0);
+        if (cellValue == 1) {
+          if (liveNeighbours > 3 || liveNeighbours < 2) {
+            tempGrid.SetValue(row, column, 0);
+          } else {
+            tempGrid.SetValue(row, column, 1);
+          }
         } else {
-          tempGrid.SetValue(row, column, 1);
-        }
-      } else {
-        if (liveNeighbours == 3) {
-          tempGrid.SetValue(row, column, 1);
-        } else {
-          tempGrid.SetValue(row, column, 0);
+          if (liveNeighbours == 3) {
+            tempGrid.SetValue(row, column, 1);
+          } else {
+            tempGrid.SetValue(row, column, 0);
+          }
         }
       }
     }
+    grid = tempGrid;
   }
-  grid = tempGrid;
+}
+
+void Simulation::ClearGrid() {
+  if (!IsRunning()) {
+    grid.Clear();
+  }
+}
+
+void Simulation::CreateRandomState() {
+  if (!IsRunning()) {
+    grid.FillRandom();
+  }
 }
