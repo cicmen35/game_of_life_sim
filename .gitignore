@@ -6,7 +6,7 @@ main
 game
 *.o
 *.obj
-# Build Folders (if you use them later)
+# Build Folders 
 build/
 bin/
 obj/
